@@ -75,17 +75,6 @@ def preprocess_data(train_df, test_df, val_split=0.2):
     X_train = X_train.reshape(-1, 28, 28)
     X_test = X_test.reshape(-1, 28, 28)
 
-    # 上采样到32x32以适应VGG等网络架构
-    import torch.nn.functional as F
-    X_train_tensor = torch.FloatTensor(X_train).unsqueeze(1)  # Add channel dimension
-    X_test_tensor = torch.FloatTensor(X_test).unsqueeze(1)
-    
-    X_train_resized = F.interpolate(X_train_tensor, size=(32, 32), mode='bilinear', align_corners=False).squeeze(1).numpy()
-    X_test_resized = F.interpolate(X_test_tensor, size=(32, 32), mode='bilinear', align_corners=False).squeeze(1).numpy()
-    
-    X_train = X_train_resized
-    X_test = X_test_resized
-
     X_train = X_train.astype('float32') / 255.0
     X_test = X_test.astype('float32') / 255.0
 
