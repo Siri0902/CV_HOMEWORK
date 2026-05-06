@@ -70,7 +70,6 @@ venv.bak/
 *.h5
 *.onnx
 *.pb
-models/
 checkpoints/
 
 # Dataset directories
