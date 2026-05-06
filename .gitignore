@@ -58,7 +58,6 @@ venv.bak/
 *.xlsx
 *.xls
 *.json
-*.yaml
 *.yml
 *.txt
 *.log

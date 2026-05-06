@@ -1,0 +1,29 @@
+# Sign Language MNIST 配置
+# ============================================
+
+# 训练配置
+training:
+  num_epochs: 2
+  batch_size: 64
+  learning_rate: 0.001
+  val_split: 0.2
+
+# 数据配置
+data:
+  num_classes: 24
+  in_channels: 1
+  image_size: 28
+
+# 模型选择（可多选）
+# 可用模型: MyDNN, VGG16, VGG19, AlexNet, ResNet18, ResNet34, ResNet50
+models:
+#  - MyDNN
+  - VGG16
+  - ResNet18
+  - AlexNet
+
+# 其他配置
+seed: 42
+save_checkpoint: true
+verbose: true
+pretrained: false
