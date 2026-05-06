@@ -3,7 +3,7 @@
 
 # 训练配置
 training:
-  num_epochs: 2
+  num_epochs: 30
   batch_size: 64
   learning_rate: 0.001
   val_split: 0.2
@@ -17,7 +17,8 @@ data:
 # 模型选择（可多选）
 # 可用模型: MyDNN, VGG16, VGG19, AlexNet, ResNet18, ResNet34, ResNet50
 models:
-#  - MyDNN
+  - SimpleCNN
+  - EnhancedCNN
   - VGG16
   - ResNet18
   - AlexNet

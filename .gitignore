@@ -57,10 +57,7 @@ venv.bak/
 *.csv
 *.xlsx
 *.xls
-*.json
-*.yml
 *.txt
-*.log
 
 # Model files
 *.pth
