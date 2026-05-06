@@ -8,10 +8,12 @@ from torch.utils.data import DataLoader, TensorDataset
 
 
 def get_label_mapping():
-    """获取标签到字母的映射"""
-    letters = {i: chr(ord('A') + i) for i in range(25)}
-    letters.pop(9)  # 移除J
-    return letters
+    """获取标签到字母的映射 (24类, A-Y不含J)"""
+    letters = []
+    for i in range(25):
+        if i != 9:  # 跳过J
+            letters.append(chr(ord('A') + i))
+    return {i: letter for i, letter in enumerate(letters)}
 
 
 class Logger:
@@ -59,6 +61,17 @@ def preprocess_data(train_df, test_df, val_split=0.2):
     y_test = test_df['label'].values
     X_test = test_df.drop('label', axis=1).values
 
+    # 标签映射：将原始标签(0-24但跳过9)映射到连续索引(0-23)
+    # 原始: A=0, B=1, ..., I=8, J=9, K=10, ..., Y=24
+    # 目标: A=0, B=1, ..., I=8, K=9, ..., Y=23 (跳过J)
+    label_map = {}
+    original_labels = sorted(set(y_train) | set(y_test))
+    for idx, orig_label in enumerate(original_labels):
+        label_map[orig_label] = idx
+
+    y_train = np.array([label_map[l] for l in y_train])
+    y_test = np.array([label_map[l] for l in y_test])
+
     X_train = X_train.reshape(-1, 28, 28)
     X_test = X_test.reshape(-1, 28, 28)
 
@@ -77,6 +90,14 @@ def preprocess_data(train_df, test_df, val_split=0.2):
 
 def create_dataloaders(X_train, X_val, X_test, y_train, y_val, y_test, batch_size=64):
     """创建DataLoader"""
+    # 复制数组以避免PyTorch警告
+    X_train = np.copy(X_train)
+    X_val = np.copy(X_val)
+    X_test = np.copy(X_test)
+    y_train = np.copy(y_train)
+    y_val = np.copy(y_val)
+    y_test = np.copy(y_test)
+
     train_dataset = TensorDataset(
         torch.FloatTensor(X_train), torch.LongTensor(y_train))
     val_dataset = TensorDataset(
