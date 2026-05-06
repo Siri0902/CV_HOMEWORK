@@ -7,7 +7,7 @@ import torch.optim as optim
 
 from config import Config
 from data_loader import load_data, preprocess_data, create_dataloaders, Logger
-from models import get_model
+from models import get_model, get_model_input_config
 from trainer import Trainer
 
 
@@ -28,18 +28,6 @@ def main():
     train_df, test_df = load_data(config.data_dir)
     logger.log(f"训练数据: {train_df.shape}, 测试数据: {test_df.shape}")
 
-    X_train, X_val, X_test, y_train, y_val, y_test = preprocess_data(
-        train_df, test_df, config.val_split
-    )
-    logger.log(
-        f"数据划分: 训练集={X_train.shape[0]}, "
-        f"验证集={X_val.shape[0]}, 测试集={X_test.shape[0]}"
-    )
-
-    train_loader, val_loader, test_loader = create_dataloaders(
-        X_train, X_val, X_test, y_train, y_val, y_test, config.batch_size
-    )
-
     model_names = config.models
     results = {}
 
@@ -48,11 +36,31 @@ def main():
         logger.log(f"训练模型: {model_name}")
         logger.log("-" * 40)
 
+        # 获取模型所需的输入配置
+        target_size, in_channels, convert_to_rgb = get_model_input_config(model_name)
+        logger.log(f"输入配置: size={target_size}, channels={in_channels}, rgb={convert_to_rgb}")
+
+        # 根据模型配置进行数据预处理
+        X_train, X_val, X_test, y_train, y_val, y_test = preprocess_data(
+            train_df, test_df,
+            val_split=config.val_split,
+            target_size=target_size,
+            convert_to_rgb=convert_to_rgb
+        )
+        logger.log(
+            f"数据划分: 训练集={X_train.shape[0]}, "
+            f"验证集={X_val.shape[0]}, 测试集={X_test.shape[0]}"
+        )
+        logger.log(f"输入张量形状 (B, C, H, W): {X_train.shape}")
+
+        train_loader, val_loader, test_loader = create_dataloaders(
+            X_train, X_val, X_test, y_train, y_val, y_test, config.batch_size
+        )
+
         model = get_model(
             model_name,
             pretrained=config.pretrained,
             num_classes=config.num_classes,
-            in_channels=config.in_channels
         )
 
         criterion = nn.CrossEntropyLoss()
