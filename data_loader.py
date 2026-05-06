@@ -1,9 +1,10 @@
-import os
 import json
+import os
+
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
 import torch
+from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader, TensorDataset
 
 
@@ -114,6 +115,7 @@ def create_dataloaders(X_train, X_val, X_test, y_train, y_val, y_test, batch_siz
 
 if __name__ == "__main__":
     from config import Config
+
     config = Config()
     train_df, test_df = load_data(config.data_dir)
     print(f"训练数据: {train_df.shape}")

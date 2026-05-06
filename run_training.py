@@ -1,16 +1,14 @@
 import os
-import sys
 import time
-import json
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import numpy as np
 
 from config import Config
-from data_loader import load_data, preprocess_data, create_dataloaders, get_label_mapping, Logger
-from trainer import Trainer
+from data_loader import load_data, preprocess_data, create_dataloaders, Logger
 from models import get_model
+from trainer import Trainer
 
 
 def main():

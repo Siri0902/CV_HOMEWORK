@@ -1,6 +1,7 @@
 import os
-import yaml
+
 import torch
+import yaml
 
 
 class Config:

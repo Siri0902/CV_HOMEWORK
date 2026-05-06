@@ -1,7 +1,6 @@
 import os
+
 import torch
-import torch.nn as nn
-import time
 
 
 class Trainer:
@@ -47,7 +46,7 @@ class Trainer:
 
             if (epoch + 1) % 5 == 0 or epoch == 0:
                 self.logger.log(
-                    f"Epoch [{epoch+1}/{num_epochs}] "
+                    f"Epoch [{epoch + 1}/{num_epochs}] "
                     f"Train Loss: {train_loss:.4f}, Acc: {train_acc:.4f} | "
                     f"Val Loss: {val_loss:.4f}, Acc: {val_acc:.4f}"
                 )
