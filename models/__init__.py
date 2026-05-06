@@ -1,18 +1,17 @@
-import torch.nn as nn
-
-from .my_dnn import MyDNN
-from .vgg import get_vgg16, get_vgg19
 from .alexnet import get_alexnet
+from .my_dnn import SimpleCNN, EnhancedCNN
 from .resnet import (
     get_resnet18, get_resnet34, get_resnet50,
     get_resnet101, get_resnet152
 )
+from .vgg import get_vgg16, get_vgg19
 
 
 def get_model(model_name, pretrained=True, num_classes=24, in_channels=1):
-    """模型工厂函数，根据名称返回对应的模型实例"""
+    """Model factory function that returns model instance based on name"""
     models_map = {
-        'MyDNN': lambda: MyDNN(num_classes=num_classes, in_channels=in_channels),
+        'SimpleCNN': lambda: SimpleCNN(num_classes=num_classes, in_channels=in_channels),
+        'EnhancedCNN': lambda: EnhancedCNN(num_classes=num_classes, in_channels=in_channels),
         'VGG16': lambda: get_vgg16(pretrained=pretrained, num_classes=num_classes, in_channels=in_channels),
         'VGG19': lambda: get_vgg19(pretrained=pretrained, num_classes=num_classes, in_channels=in_channels),
         'ResNet18': lambda: get_resnet18(pretrained=pretrained, num_classes=num_classes, in_channels=in_channels),
@@ -30,7 +29,8 @@ def get_model(model_name, pretrained=True, num_classes=24, in_channels=1):
 
 
 __all__ = [
-    'MyDNN', 'get_vgg16', 'get_vgg19', 'get_alexnet',
+    'SimpleCNN', 'EnhancedCNN',
+    'get_vgg16', 'get_vgg19', 'get_alexnet',
     'get_resnet18', 'get_resnet34', 'get_resnet50', 'get_resnet101', 'get_resnet152',
     'get_model'
 ]
