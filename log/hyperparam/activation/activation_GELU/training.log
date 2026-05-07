@@ -1,0 +1,13 @@
+[2026-05-07 16:18:55] ============================================================
+[2026-05-07 16:18:55] 实验: activation = GELU
+[2026-05-07 16:18:55] 配置: {'batch_size': 128, 'epochs': 20, 'learning_rate': 0.001, 'optimizer': 'Adam', 'activation': 'GELU'}
+[2026-05-07 16:18:55] ============================================================
+[2026-05-07 16:18:56] 开始训练 EnhancedCNN...
+[2026-05-07 16:18:58] Epoch [1/20] Train Loss: 0.4650, Acc: 0.8569 | Val Loss: 0.0203, Acc: 0.9931
+[2026-05-07 16:19:03] Epoch [5/20] Train Loss: 0.0009, Acc: 0.9999 | Val Loss: 0.0016, Acc: 0.9995
+[2026-05-07 16:19:10] Epoch [10/20] Train Loss: 0.0001, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:19:16] Epoch [15/20] Train Loss: 0.0000, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:19:23] Epoch [20/20] Train Loss: 0.0000, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:19:23] 模型已保存: /root/shared-nvme/workspace/CV_HOMEWORK/log/hyperparam/activation/activation_GELU/checkpoints/EnhancedCNN.pth
+[2026-05-07 16:19:23] EnhancedCNN 训练完成! 最佳验证准确率: 1.0000
+[2026-05-07 16:19:23] 实验完成! 最佳验证准确率: 1.0000, 训练时间: 26.77秒

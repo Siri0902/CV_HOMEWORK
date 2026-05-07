@@ -1,0 +1,13 @@
+[2026-05-07 16:17:29] ============================================================
+[2026-05-07 16:17:29] 实验: optimizer = SGD
+[2026-05-07 16:17:29] 配置: {'batch_size': 128, 'epochs': 20, 'learning_rate': 0.001, 'optimizer': 'SGD', 'activation': 'ReLU'}
+[2026-05-07 16:17:29] ============================================================
+[2026-05-07 16:17:31] 开始训练 EnhancedCNN...
+[2026-05-07 16:17:32] Epoch [1/20] Train Loss: 1.5955, Acc: 0.5906 | Val Loss: 0.2995, Acc: 0.9761
+[2026-05-07 16:17:38] Epoch [5/20] Train Loss: 0.0169, Acc: 0.9998 | Val Loss: 0.0036, Acc: 1.0000
+[2026-05-07 16:17:44] Epoch [10/20] Train Loss: 0.0054, Acc: 1.0000 | Val Loss: 0.0009, Acc: 1.0000
+[2026-05-07 16:17:50] Epoch [15/20] Train Loss: 0.0033, Acc: 1.0000 | Val Loss: 0.0005, Acc: 1.0000
+[2026-05-07 16:17:57] Epoch [20/20] Train Loss: 0.0024, Acc: 1.0000 | Val Loss: 0.0003, Acc: 1.0000
+[2026-05-07 16:17:57] 模型已保存: /root/shared-nvme/workspace/CV_HOMEWORK/log/hyperparam/optimizer/optimizer_SGD/checkpoints/EnhancedCNN.pth
+[2026-05-07 16:17:57] EnhancedCNN 训练完成! 最佳验证准确率: 1.0000
+[2026-05-07 16:17:57] 实验完成! 最佳验证准确率: 1.0000, 训练时间: 25.97秒

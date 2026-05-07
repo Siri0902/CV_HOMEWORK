@@ -1,0 +1,13 @@
+[2026-05-07 16:19:23] ============================================================
+[2026-05-07 16:19:23] 实验: activation = ELU
+[2026-05-07 16:19:23] 配置: {'batch_size': 128, 'epochs': 20, 'learning_rate': 0.001, 'optimizer': 'Adam', 'activation': 'ELU'}
+[2026-05-07 16:19:23] ============================================================
+[2026-05-07 16:19:25] 开始训练 EnhancedCNN...
+[2026-05-07 16:19:26] Epoch [1/20] Train Loss: 0.4120, Acc: 0.8735 | Val Loss: 0.0033, Acc: 0.9985
+[2026-05-07 16:19:31] Epoch [5/20] Train Loss: 0.0001, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:19:38] Epoch [10/20] Train Loss: 0.0001, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:19:44] Epoch [15/20] Train Loss: 0.0000, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:19:51] Epoch [20/20] Train Loss: 0.0000, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:19:51] 模型已保存: /root/shared-nvme/workspace/CV_HOMEWORK/log/hyperparam/activation/activation_ELU/checkpoints/EnhancedCNN.pth
+[2026-05-07 16:19:51] EnhancedCNN 训练完成! 最佳验证准确率: 1.0000
+[2026-05-07 16:19:51] 实验完成! 最佳验证准确率: 1.0000, 训练时间: 26.36秒

@@ -1,0 +1,13 @@
+[2026-05-07 16:18:25] ============================================================
+[2026-05-07 16:18:25] 实验: activation = ReLU
+[2026-05-07 16:18:25] 配置: {'batch_size': 128, 'epochs': 20, 'learning_rate': 0.001, 'optimizer': 'Adam', 'activation': 'ReLU'}
+[2026-05-07 16:18:25] ============================================================
+[2026-05-07 16:18:27] 开始训练 EnhancedCNN...
+[2026-05-07 16:18:28] Epoch [1/20] Train Loss: 0.7000, Acc: 0.7830 | Val Loss: 0.0505, Acc: 0.9874
+[2026-05-07 16:18:34] Epoch [5/20] Train Loss: 0.0005, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:18:41] Epoch [10/20] Train Loss: 0.0005, Acc: 0.9999 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:18:48] Epoch [15/20] Train Loss: 0.0001, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:18:55] Epoch [20/20] Train Loss: 0.0001, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:18:55] 模型已保存: /root/shared-nvme/workspace/CV_HOMEWORK/log/hyperparam/activation/activation_ReLU/checkpoints/EnhancedCNN.pth
+[2026-05-07 16:18:55] EnhancedCNN 训练完成! 最佳验证准确率: 1.0000
+[2026-05-07 16:18:55] 实验完成! 最佳验证准确率: 1.0000, 训练时间: 27.71秒

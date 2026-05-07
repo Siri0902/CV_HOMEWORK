@@ -1,0 +1,13 @@
+[2026-05-07 16:17:57] ============================================================
+[2026-05-07 16:17:57] 实验: optimizer = RMSprop
+[2026-05-07 16:17:57] 配置: {'batch_size': 128, 'epochs': 20, 'learning_rate': 0.001, 'optimizer': 'RMSprop', 'activation': 'ReLU'}
+[2026-05-07 16:17:57] ============================================================
+[2026-05-07 16:17:58] 开始训练 EnhancedCNN...
+[2026-05-07 16:18:00] Epoch [1/20] Train Loss: 1.5061, Acc: 0.5377 | Val Loss: 0.0658, Acc: 0.9887
+[2026-05-07 16:18:06] Epoch [5/20] Train Loss: 0.0936, Acc: 0.9792 | Val Loss: 0.0003, Acc: 1.0000
+[2026-05-07 16:18:12] Epoch [10/20] Train Loss: 0.0381, Acc: 0.9924 | Val Loss: 0.0044, Acc: 0.9989
+[2026-05-07 16:18:19] Epoch [15/20] Train Loss: 0.0000, Acc: 1.0000 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:18:25] Epoch [20/20] Train Loss: 0.0178, Acc: 0.9971 | Val Loss: 0.0014, Acc: 0.9996
+[2026-05-07 16:18:25] 模型已保存: /root/shared-nvme/workspace/CV_HOMEWORK/log/hyperparam/optimizer/optimizer_RMSprop/checkpoints/EnhancedCNN.pth
+[2026-05-07 16:18:25] EnhancedCNN 训练完成! 最佳验证准确率: 1.0000
+[2026-05-07 16:18:25] 实验完成! 最佳验证准确率: 1.0000, 训练时间: 26.72秒

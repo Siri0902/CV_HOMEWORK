@@ -1,0 +1,13 @@
+[2026-05-07 16:16:03] ============================================================
+[2026-05-07 16:16:03] 实验: learning_rate = 0.005
+[2026-05-07 16:16:03] 配置: {'batch_size': 128, 'epochs': 20, 'learning_rate': 0.005, 'optimizer': 'Adam', 'activation': 'ReLU'}
+[2026-05-07 16:16:03] ============================================================
+[2026-05-07 16:16:05] 开始训练 EnhancedCNN...
+[2026-05-07 16:16:06] Epoch [1/20] Train Loss: 1.7099, Acc: 0.4447 | Val Loss: 0.4746, Acc: 0.8266
+[2026-05-07 16:16:12] Epoch [5/20] Train Loss: 0.0357, Acc: 0.9905 | Val Loss: 0.0153, Acc: 0.9947
+[2026-05-07 16:16:19] Epoch [10/20] Train Loss: 0.0138, Acc: 0.9964 | Val Loss: 0.0037, Acc: 0.9996
+[2026-05-07 16:16:25] Epoch [15/20] Train Loss: 0.0842, Acc: 0.9817 | Val Loss: 0.2242, Acc: 0.9335
+[2026-05-07 16:16:32] Epoch [20/20] Train Loss: 0.0003, Acc: 0.9999 | Val Loss: 0.0000, Acc: 1.0000
+[2026-05-07 16:16:32] 模型已保存: /root/shared-nvme/workspace/CV_HOMEWORK/log/hyperparam/learning_rate/learning_rate_0.005/checkpoints/EnhancedCNN.pth
+[2026-05-07 16:16:32] EnhancedCNN 训练完成! 最佳验证准确率: 1.0000
+[2026-05-07 16:16:32] 实验完成! 最佳验证准确率: 1.0000, 训练时间: 27.40秒
