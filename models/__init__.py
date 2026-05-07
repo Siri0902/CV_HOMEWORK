@@ -20,7 +20,7 @@ def get_model_input_config(model_name):
         tuple: (target_size, in_channels, convert_to_rgb)
     """
     if model_name in STANDARD_MODELS:
-        return 224, 3, True
+        return 64, 3, True
     elif model_name in CUSTOM_MODELS:
         return 28, 1, False
     else:

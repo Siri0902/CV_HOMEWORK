@@ -8,7 +8,7 @@ from sklearn.metrics import confusion_matrix, classification_report
 
 from config import Config
 from data_loader import load_data, preprocess_data, create_dataloaders, get_label_mapping, Logger
-from models import get_model
+from models import get_model, get_model_input_config
 from trainer import evaluate_model
 
 
@@ -17,17 +17,19 @@ def plot_training_curves(results, log_dir):
     os.makedirs(plots_dir, exist_ok=True)
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
+    cmap = plt.colormaps['tab10']
 
     for idx, (name, res) in enumerate(results.items()):
         history = res['history']
-        axes[0, 0].plot(history['train_loss'], label=f'{name}', color=colors[idx])
-        axes[0, 1].plot(history['train_acc'], label=f'{name}', color=colors[idx])
+        color = cmap(idx % 10)
+        axes[0, 0].plot(history['train_loss'], label=f'{name}', color=color)
+        axes[0, 1].plot(history['train_acc'], label=f'{name}', color=color)
 
     for idx, (name, res) in enumerate(results.items()):
         history = res['history']
-        axes[1, 0].plot(history['val_loss'], label=f'{name}', color=colors[idx])
-        axes[1, 1].plot(history['val_acc'], label=f'{name}', color=colors[idx])
+        color = cmap(idx % 10)
+        axes[1, 0].plot(history['val_loss'], label=f'{name}', color=color)
+        axes[1, 1].plot(history['val_acc'], label=f'{name}', color=color)
 
     axes[0, 0].set_title('Training Loss')
     axes[0, 0].set_xlabel('Epoch')
@@ -82,9 +84,10 @@ def evaluate_best_model(config, device):
     model.load_state_dict(state_dict)
     model = model.to(device)
 
+    target_size, _, _ = get_model_input_config(best_model_name)
     train_df, test_df = load_data(config.data_dir)
     X_train, X_val, X_test, y_train, y_val, y_test = preprocess_data(
-        train_df, test_df, config.val_split
+        train_df, test_df, config.val_split, target_size=target_size
     )
     test_loader = create_dataloaders(
         X_train, X_val, X_test, y_train, y_val, y_test, config.batch_size
@@ -144,7 +147,7 @@ def plot_sample_predictions(X_test, y_true, y_pred, log_dir):
         axes[i].axis('off')
 
     plt.suptitle('Sample Predictions (Green=Correct, Red=Incorrect)')
-    plt.tight_layout()
+    plt.subplots_adjust(hspace=0.5, top=0.88)
     plt.savefig(os.path.join(plots_dir, 'sample_predictions.png'), dpi=150)
     plt.close()
     print("Sample predictions saved")
@@ -159,11 +162,14 @@ def main():
     with open(os.path.join(config.log_dir, 'results.json'), 'r') as f:
         results = json.load(f)
 
+    best_model_name = max(results.keys(), key=lambda k: results[k].get('val_accuracy', 0))
+    target_size, _, _ = get_model_input_config(best_model_name)
+
     plot_training_curves(results, config.log_dir)
 
     train_df, test_df = load_data(config.data_dir)
     X_train, X_val, X_test, y_train, y_val, y_test = preprocess_data(
-        train_df, test_df, config.val_split
+        train_df, test_df, config.val_split, target_size=target_size
     )
 
     eval_results, y_true, y_pred = evaluate_best_model(config, device)
