@@ -27,7 +27,7 @@ def get_model_input_config(model_name):
         raise ValueError(f"Unknown model: {model_name}")
 
 
-def get_model(model_name, pretrained=True, num_classes=24, in_channels=None):
+def get_model(model_name, pretrained=True, num_classes=24, in_channels=None, activation='ReLU'):
     """Model factory function that returns model instance based on name"""
     # 自动推断in_channels（如果未指定）
     if in_channels is None:
@@ -35,7 +35,7 @@ def get_model(model_name, pretrained=True, num_classes=24, in_channels=None):
     
     models_map = {
         'SimpleCNN': lambda: SimpleCNN(num_classes=num_classes, in_channels=in_channels),
-        'EnhancedCNN': lambda: EnhancedCNN(num_classes=num_classes, in_channels=in_channels),
+        'EnhancedCNN': lambda: EnhancedCNN(num_classes=num_classes, in_channels=in_channels, activation=activation),
         'VGG16': lambda: get_vgg16(pretrained=pretrained, num_classes=num_classes, in_channels=in_channels),
         'VGG19': lambda: get_vgg19(pretrained=pretrained, num_classes=num_classes, in_channels=in_channels),
         'ResNet18': lambda: get_resnet18(pretrained=pretrained, num_classes=num_classes, in_channels=in_channels),

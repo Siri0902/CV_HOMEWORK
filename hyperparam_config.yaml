@@ -1,0 +1,27 @@
+# 超参数实验配置
+# ============================================
+
+# 默认超参数（其他参数保持这些默认值）
+default:
+  batch_size: 128
+  epochs: 20
+  learning_rate: 0.001
+  optimizer: Adam
+  activation: ReLU
+
+# 实验参数值（每个参数分别实验）
+experiment:
+  batch_size: [16, 32, 64, 128, 256]
+  epochs: [5, 10, 20, 30]
+  learning_rate: [0.0001, 0.0005, 0.001, 0.005, 0.01]
+  optimizer: [Adam, SGD, RMSprop]
+  activation: [ReLU, GELU, ELU]
+
+# 模型配置
+model: EnhancedCNN
+num_classes: 24
+val_split: 0.2
+seed: 42
+
+# 输出目录根目录
+output_root: log/hyperparam
