@@ -93,7 +93,6 @@ def main():
     for name, res in results.items():
         comparison_md += f"| {name} | {res['best_val_acc']:.4f} | {res['train_time']:.2f} |\n"
 
-    logger.save_markdown(comparison_md, 'model_comparison.md')
     logger.log("\n" + comparison_md)
 
     results_json = {
